@@ -1,0 +1,203 @@
+
+
+5 - 101
+
+3.14 - 011.0010001111
+
+0.14 * 2 = 0.28 - 0
+0.28 * 2 = 0.56 - 0
+0.56 * 2 = 1.12 - 1
+0.12 * 2 = 0.24 - 0 
+0.24 * 2 = 0.48 - 0
+0.48 * 2 = 0.96 - 0 
+0.96 * 2 = 1.92 - 1
+0.92 * 2 = 1.84 - 1
+0.84 * 2 = 1.68 - 1
+0.68 * 2 = 1.36 - 1.....
+
+
+implicit normalization:
+
+011.0010001111
+
+radix point will be moved to right side for msb one 
+
+56.25
+5.625 * 10 ^ 1
+0.5625 * 10^2
+
+
+01.10010001111 * 2 ^ 1
+
+c lang - 4 bytes 
+4 bytes - 32 bits 
+
+1 - S
+8 - exponent (1+127=128)
+23 - mantissa 
+
+
+actual bit value:
+
+01000000010010001111
+010000000100100011110111000011 
+11000000010010001111010111000011
+
+3.14
+-3.14
+
+-------------------------------------------------------------------------------
+
+commands:
+
+
+ctrl + alt + t - short cut to open terminal 
+
+clear - used to clear terminal 
+
+ctrl + l - shortcut to clear screen
+
+
+
+- pwd
+	- present working directory 
+	- display current working directory 
+	
+	Eg: pwd 
+	
+- whoami
+	- display the user name of current user logged in 
+	
+	Eg: whoami
+	
+- cd
+	- change directory 
+	- traverse b/w the directories 
+	
+	eg: cd /
+		cd /bin
+		cd /home/kali
+		cd . (current directory)
+		cd .. (parent directory)
+		cd ../..
+		cd ../../../../../../../../
+
+
+listing directories:
+
+- ls 
+	- listing directories 
+	- used to display content of the folder /directory 
+	
+	Eg: ls 
+		ls -l = displaying contents of a folder in longer format 
+		ls -a = display hidden files 
+		
+- dir 
+	- used to display content of folders 
+		
+		Eg: dir 
+			dir -F 
+			dir -l 
+			
+			
+getting help:
+
+- we do have multiple commands 
+- each command will have multiple options 
+- there is a standard to display help menu for a command 
+- -h or --help it will display help menu for options 
+	Eg: rmdir --help 
+		nmap -h 
+		
+		
+manual pages:
+
+- where every command contains manual documentation pages 
+- it display the official documentation 
+- command used for, options command has, about evry option 
+- additional command data 
+
+	Eg: man nmap 
+		man ls 
+		
+		info is same as man 
+		
+		
+-------------------------------------------------------------------------------
+
+programs to print binary equ of floating numbers 
+
+c:
+
+#include <stdio.h>
+#include <stdint.h>
+
+void floatToBinary(float floatVariable) {
+    // Interpret the float as a 32-bit unsigned integer
+    uint32_t floatAsInt;
+    memcpy(&floatAsInt, &floatVariable, sizeof(floatVariable));
+
+    // Print the binary representation
+    for (int i = 31; i >= 0; --i) {
+        printf("%d", (floatAsInt >> i) & 1);
+        if (i % 8 == 0) {
+            printf(" ");  // Add a space for better readability
+        }
+    }
+
+    printf("\n");
+}
+
+int main() {
+    // Example usage:
+    float myFloatVariable = 3.14;  // Replace 3.14 with your float variable
+    floatToBinary(myFloatVariable);
+
+    return 0;
+}
+
+
+java:
+
+public class FloatToBinary {
+
+    public static void floatToBinary(float floatVariable) {
+        // Interpret the float as an integer using Float.floatToIntBits
+        int floatAsInt = Float.floatToIntBits(floatVariable);
+
+        // Print the binary representation
+        for (int i = 31; i >= 0; i--) {
+            System.out.print((floatAsInt >> i) & 1);
+            if (i % 8 == 0) {
+                System.out.print(" ");  // Add a space for better readability
+            }
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        float myFloatVariable = 3.14f;  // Replace 3.14 with your float variable
+        floatToBinary(myFloatVariable);
+    }
+}
+
+
+python:
+
+import struct
+
+def float_to_binary_representation(float_variable):
+    # Pack the float into bytes using struct.pack
+    float_bytes = struct.pack('!f', float_variable)
+    
+    # Convert each byte to its binary representation and join them
+    binary_representation = ''.join(format(byte, '08b') for byte in float_bytes)
+    
+    print(f"The binary representation of {float_variable} is: {binary_representation}")
+
+# Example usage:
+my_float_variable = 3.14  # Replace 3.14 with your float variable
+float_to_binary_representation(my_float_variable)
