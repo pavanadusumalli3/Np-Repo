@@ -1,0 +1,111 @@
+
+
+URL
+
+- uniform resource locator
+- used to identify a resource in the internet
+- text, .html, .mp3, .mp4, .js, .css, .c, .java 
+
+basic structure of a url:
+
+	http://subdomain.domain.com:80/path_to_resource?key1=value1&key2=value2/#fragment
+	
+	http/https: schema or protocol 
+	domain : website we are going to visit 
+	80: port number 
+	path_to_resource: path of resource in web server 
+	key1, key2 : used to search for resource 
+	#fragment: it represents a part of resource 
+	
+------------------------------------------------------------------------------------------------
+
+
+Modifying files and directories:
+
+1. using touch command:
+
+- used to create a new file 
+- lightweight command
+- if file we are creating using touch do not exist it creates on exist
+- if file already exist, it changes last modified time 
+	Eg: touch file_name 
+	
+
+2. using redirection operators:
+
+- everything is a file 
+- we do have 3 file streams 
+		- file 0 
+			- input file 
+		- file 1
+			- output file 
+		- file 2
+			- error file 
+			
+
+- terminal -> shell -> command entered -> file 0 -> shell -> search in PATH -> binary code will be executed -> process 
+-> file 1 -> terminal display 
+
+	Eg: ls 
+			- o/p displayed on terminal 
+			- o/p file 1
+			
+		ls > ls.txt 
+		
+		
+3. using cat command:
+
+- by combining cat command with redirection operator we can create new files 
+- we can enter data into file during creation 
+- we have to press ctrl+d to come out of cat prompt 
+
+	Eg: cat > file1.txt 
+	
+	
+4. using echo command:
+
+- by combining ech with redirection operator 
+
+	Eg: echo "Linux is good" > file2.txt 
+
+
+5. using vi/vim editor:
+
+- one of the oldest editors in linux 
+- it do contains number of short cuts 
+- press "i" to enter insert mode 
+- data enter 
+- press ESC then : then w (save)then q (exit)
+
+	Eg: vim file3
+	
+	
+6. using nano editor:
+
+- nano command opening a nano prompt 
+- enter data 
+- ctrl + x
+- press y to save 
+- press enter to exit 
+
+	Eg: nano file4 
+	
+	
+--------------------------------------------------------------
+
+Creating Directories:
+
+1. using mkdir 
+
+- make directory 
+- used to create folders 
+- we can create multiples directories at once 
+- we can create multiple directories with hierarchy 
+
+	Eg; mkdir foldr_name 
+		mkdir fol1 fol2 fol3 fol4 
+		mkdir a/b - it will create directory b inside directory a if directory a is present, other wise error 
+		mkdir -p c/d : it will create d inside c, if c exist
+					   it will create c first and then d inside c 
+
+
